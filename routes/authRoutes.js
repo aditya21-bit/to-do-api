@@ -5,10 +5,8 @@ const User = require("../models/User");
 
 const router = express.Router();
 
-
 // REGISTER
 router.post("/register", async (req, res) => {
-
     try {
 
         const { name, email, password } = req.body;
@@ -37,16 +35,18 @@ router.post("/register", async (req, res) => {
 
     } catch (error) {
 
-        res.status(500).json(error);
+        console.log(error);
+
+        res.status(500).json({
+            message: error.message
+        });
 
     }
-
 });
 
 
 // LOGIN
 router.post("/login", async (req, res) => {
-
     try {
 
         const { email, password } = req.body;
@@ -80,10 +80,13 @@ router.post("/login", async (req, res) => {
 
     } catch (error) {
 
-        res.status(500).json(error);
+        console.log(error);
+
+        res.status(500).json({
+            message: error.message
+        });
 
     }
-
 });
 
 module.exports = router;
